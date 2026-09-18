@@ -1,0 +1,30 @@
+<table border="1" style="border-collapse: collapse; text-align: left; width: 400px; font-family: sans-serif; font-size: 14px;">
+  <tr>
+    <td style="color: #666; padding: 2px;">Ma Danh Muc</td>
+    <td style="color: #666; padding: 2px;">Ten Danh Muc</td>
+  </tr>
+  <ng-container *ngFor="let cat of catalogs">
+    <tr>
+      <td style="padding: 2px;">{{cat.Cateid}}</td>
+      <td style="padding: 2px;">{{cat.CateName}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding: 0;">
+        <table border="1" style="border-collapse: collapse; width: 100%; text-align: left;">
+          <tr>
+            <td style="color: #666; padding: 2px;">Ma San Pham</td>
+            <td style="color: #666; padding: 2px;">Ten San Pham</td>
+            <td style="color: #666; padding: 2px;">Gia San Pham</td>
+            <td style="color: #666; padding: 2px;">Picture</td>
+          </tr>
+          <tr *ngFor="let p of cat.Products">
+            <td style="padding: 2px;">{{p.ProductId}}</td>
+            <td style="padding: 2px;">{{p.ProductName}}</td>
+            <td style="padding: 2px;">{{p.Price}}</td>
+            <td style="padding: 2px; text-align: center;"><img src="{{p.Image}}" width="40"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </ng-container>
+</table>

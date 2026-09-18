@@ -1,20 +1,24 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { ServiceProductImageEventComponent } from './service-product-image-event/service-product-image-event.component';
+import { ServiceProductImageEventDetailComponent } from './service-product-image-event-detail/service-product-image-event-detail.component';
+import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    ServiceProductImageEventComponent,
+    ServiceProductImageEventDetailComponent,
+    ProductCatalogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-  ],
+  providers: [],
   bootstrap: [App]
 })
 export class AppModule { }
