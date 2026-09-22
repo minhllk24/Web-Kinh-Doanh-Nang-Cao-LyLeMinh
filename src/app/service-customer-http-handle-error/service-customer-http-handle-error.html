@@ -1,8 +1,8 @@
 <p>service-customer-http-handle-error works!</p>
 
 <div style="margin-bottom: 15px;">
-  <button (click)="loadData()" style="margin-right: 10px;">Load Đúng Dữ Liệu</button>
-  <button (click)="loadWrongData()">Load Sai Đường Dẫn (Test Lỗi)</button>
+  <button type="button" (click)="loadData()" style="margin-right: 10px;">Load Đúng Dữ Liệu</button>
+  <button type="button" (click)="loadWrongData()">Load Sai Đường Dẫn (Test Lỗi)</button>
 </div>
 
 <div *ngIf="errMessage" style="color: red; margin-bottom: 15px;">

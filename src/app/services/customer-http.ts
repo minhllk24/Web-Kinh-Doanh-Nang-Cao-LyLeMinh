@@ -13,7 +13,6 @@ export class CustomerHttpService {
 
   getCustomersHandleError(): Observable<any> {
     return this._http.get<any>(this._url).pipe(
-      retry(3),
       catchError(this.handleError)
     );
   }
@@ -22,7 +21,6 @@ export class CustomerHttpService {
   getCustomersHandleErrorWrongUrl(): Observable<any> {
     const wrongUrl = './assets/data/customersXXX.json';
     return this._http.get<any>(wrongUrl).pipe(
-      retry(3),
       catchError(this.handleError)
     );
   }
