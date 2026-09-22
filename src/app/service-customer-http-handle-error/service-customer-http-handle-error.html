@@ -1,0 +1,36 @@
+<p>service-customer-http-handle-error works!</p>
+
+<div style="margin-bottom: 15px;">
+  <button (click)="loadData()" style="margin-right: 10px;">Load Đúng Dữ Liệu</button>
+  <button (click)="loadWrongData()">Load Sai Đường Dẫn (Test Lỗi)</button>
+</div>
+
+<div *ngIf="errMessage" style="color: red; margin-bottom: 15px;">
+  Error: {{ errMessage }}
+</div>
+
+<table *ngIf="customerGroups && !errMessage" border="1" style="border-collapse: collapse; text-align: left; width: 600px; font-family: sans-serif; font-size: 14px;">
+  <tr>
+    <th style="padding: 5px;">Id</th>
+    <th style="padding: 5px;">Name</th>
+    <th style="padding: 5px;">Email</th>
+    <th style="padding: 5px;">Age</th>
+    <th style="padding: 5px;">#</th>
+  </tr>
+  <ng-container *ngFor="let group of customerGroups">
+    <tr>
+      <td colspan="5" style="background-color: #f0f0f0; padding: 5px; font-weight: bold;">
+        {{group.CustomerTypeId}} - {{group.CustomterTypeName}}
+      </td>
+    </tr>
+    <tr *ngFor="let c of group.Customers">
+      <td style="padding: 5px;">{{c.Id}}</td>
+      <td style="padding: 5px;">{{c.Name}}</td>
+      <td style="padding: 5px;">{{c.Email}}</td>
+      <td style="padding: 5px;">{{c.Age}}</td>
+      <td style="padding: 5px; text-align: center;">
+        <img src="{{c.Image}}" width="100">
+      </td>
+    </tr>
+  </ng-container>
+</table>
