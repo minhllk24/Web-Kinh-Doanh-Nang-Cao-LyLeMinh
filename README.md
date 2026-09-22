@@ -1,7 +1,7 @@
 # BÀI TẬP MÔN WEB KINH DOANH NÂNG CAO
 
 **Họ và tên:** Lý Lê Minh  
-**Mã sinh viên:** K24  
+**Mã sinh viên:** K244060789  
 **Repository GitHub:** [Web-Kinh-Doanh-Nang-Cao-LyLeMinh](https://github.com/minhllk24/Web-Kinh-Doanh-Nang-Cao-LyLeMinh.git)  
 
 ---
