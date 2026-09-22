@@ -18,26 +18,31 @@ export class ServiceCustomerHttpHandleError implements OnInit {
   }
 
   loadData() {
+    this.errMessage = '';
+    this.customerGroups = null;
     this._service.getCustomersHandleError().subscribe({
       next: (data) => {
         this.customerGroups = data;
         this.errMessage = '';
       },
       error: (err) => {
-        this.errMessage = err;
+        this.errMessage = typeof err === 'string' ? err : (err.message || String(err));
+        this.customerGroups = null;
       }
     });
   }
 
   // Phương thức để demo lỗi (tải sai URL)
   loadWrongData() {
+    this.errMessage = '';
+    this.customerGroups = null;
     this._service.getCustomersHandleErrorWrongUrl().subscribe({
       next: (data) => {
         this.customerGroups = data;
         this.errMessage = '';
       },
       error: (err) => {
-        this.errMessage = err;
+        this.errMessage = typeof err === 'string' ? err : (err.message || String(err));
         this.customerGroups = null; // Xóa dữ liệu cũ nếu lỗi
       }
     });

@@ -26,6 +26,6 @@ export class CustomerHttpService {
   }
 
   handleError(error: HttpErrorResponse) {
-    return throwError(() => new Error(error.message));
+    return throwError(() => error.message || error.statusText || 'Server Error');
   }
 }
