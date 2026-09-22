@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CustomerHttpService } from '../services/customer-http';
 
 @Component({
@@ -11,7 +11,10 @@ export class ServiceCustomerHttpHandleError implements OnInit {
   customerGroups: any;
   errMessage: string = '';
 
-  constructor(private _service: CustomerHttpService) {}
+  constructor(
+    private _service: CustomerHttpService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -21,16 +24,19 @@ export class ServiceCustomerHttpHandleError implements OnInit {
     // Xóa ngay trạng thái cũ trên UI khi vừa click
     this.errMessage = '';
     this.customerGroups = null;
+    this.cdr.detectChanges(); // Ép cập nhật giao diện
     
     this._service.getCustomersHandleError().subscribe({
       next: (data) => {
         this.customerGroups = data;
         this.errMessage = '';
+        this.cdr.detectChanges(); // Ép cập nhật giao diện
       },
       error: (err) => {
         // Trích xuất đúng câu thông báo lỗi
         this.errMessage = err.message ? err.message : err.toString();
         this.customerGroups = null;
+        this.cdr.detectChanges(); // Ép cập nhật giao diện
       }
     });
   }
@@ -39,16 +45,19 @@ export class ServiceCustomerHttpHandleError implements OnInit {
     // Xóa ngay trạng thái cũ trên UI khi vừa click
     this.errMessage = '';
     this.customerGroups = null;
+    this.cdr.detectChanges(); // Ép cập nhật giao diện
     
     this._service.getCustomersHandleErrorWrongUrl().subscribe({
       next: (data) => {
         this.customerGroups = data;
         this.errMessage = '';
+        this.cdr.detectChanges(); // Ép cập nhật giao diện
       },
       error: (err) => {
         // Trích xuất đúng câu thông báo lỗi
         this.errMessage = err.message ? err.message : err.toString();
         this.customerGroups = null;
+        this.cdr.detectChanges(); // Ép cập nhật giao diện
       }
     });
   }
