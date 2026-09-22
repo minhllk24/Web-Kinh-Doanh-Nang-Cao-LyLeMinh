@@ -4,7 +4,8 @@ import { CustomerHttpService } from '../services/customer-http';
 @Component({
   selector: 'app-service-customer-http-handle-error',
   templateUrl: './service-customer-http-handle-error.html',
-  styleUrls: ['./service-customer-http-handle-error.css']
+  styleUrls: ['./service-customer-http-handle-error.css'],
+  standalone: false
 })
 export class ServiceCustomerHttpHandleError implements OnInit {
   customerGroups: any;
