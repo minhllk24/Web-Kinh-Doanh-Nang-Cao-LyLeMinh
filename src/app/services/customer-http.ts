@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +26,15 @@ export class CustomerHttpService {
   }
 
   handleError(error: HttpErrorResponse) {
-    return throwError(() => error.message || error.statusText || 'Server Error');
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Client side error
+      errorMessage = error.error.message;
+    } else {
+      // Server side error
+      errorMessage = `Mã lỗi: ${error.status} - Lấy dữ liệu thất bại từ đường dẫn!`;
+    }
+    // Trả về một Error object theo đúng format bài tập yêu cầu
+    return throwError(() => new Error(errorMessage));
   }
 }
